@@ -1,0 +1,22 @@
+/* header.component.css or header.component.scss */
+
+/* Style the ul element to remove the default list styling and display inline */
+ul[nz-menu] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+  }
+  
+  /* Style the li elements (menu items) to display inline and add spacing between them */
+  ul[nz-menu] li[nz-menu-item] {
+    display: inline;
+    margin-right: 20px; /* Adjust the margin as needed to separate the menu items */
+  }
+
+
+  #ulid{
+    color: bisque;
+    font-size: large;
+  }
+  
