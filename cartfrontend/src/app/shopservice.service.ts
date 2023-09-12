@@ -22,9 +22,21 @@ export class ShopserviceService {
     );
   }
 
-  addToCart(data: any): Observable<any> {
+  addToCart(pid: any, name: any, rate: any, shortdiscretion: any, imageurl: any, discretion: any, quantity: number,sessionId:any): Observable<any> {
+    const requestData = {
+      sessionId:sessionId,
+      pid: pid,
+      name: name,
+      rate: rate,
+      shortdiscretion: shortdiscretion,
+      imageurl: imageurl,
+      discretion: discretion,
+      quantity: quantity || 1// Include the quantity in the request
+    };
+
+
     // Send a POST request to your API
-    return this.http.post<any>(`${this.apiUrl}/addtocart`, data);
+    return this.http.post<any>(`${this.apiUrl}/addtocart`,requestData);
   }
 
 }

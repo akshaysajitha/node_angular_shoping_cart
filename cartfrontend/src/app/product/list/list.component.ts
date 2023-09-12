@@ -8,10 +8,13 @@ import { ShopserviceService } from 'src/app/shopservice.service';
 })
 export class ListComponent implements OnInit {
   productdata!:any[]
+  sessionId: any='null';
 
   constructor(private myservice: ShopserviceService, private router: Router) { }
 
   ngOnInit(): void {
+    const storedSessionId = localStorage.getItem('sessionId');
+    this.sessionId = storedSessionId !== null ? storedSessionId : null;
     this.myservice.getData().subscribe(
       (response) => {
         this.productdata = response;
@@ -21,13 +24,17 @@ export class ListComponent implements OnInit {
   }
 
 
-  addtocart(item:string):void{
-     const productdatasend={
-      pid:item
-     };
+  addtocart(item:any):void{
+    const { pid, name, rate, shortdiscretion, imageurl, discretion, quantity } = item;
+    
 
-     this.myservice.addToCart(productdatasend).subscribe(
+     this.myservice.addToCart(pid, name, rate, shortdiscretion, imageurl, discretion, quantity, this.sessionId).subscribe(
       (response)=>{
+        if(response.token){
+          this.sessionId=response.token;
+          localStorage.setItem('sessionId',this.sessionId)
+        }
+        alert(pid+name+rate+shortdiscretion+imageurl+discretion+'quentity'+quantity+'session'+this.sessionId )
         console.log('Item added to cart:', response);
       },
       (error) => {
@@ -38,6 +45,12 @@ export class ListComponent implements OnInit {
     
     //  next page cart navigate button wrk function
 
+  }
+
+  logout(){
+    this.sessionId='null'
+    localStorage.clear()
+    
   }
 
 }

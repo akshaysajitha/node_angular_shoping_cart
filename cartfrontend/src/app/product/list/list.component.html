@@ -1,6 +1,6 @@
  
 <h1 class="cart-heading">Cart page</h1>
-
+<button nz-button nzType="primary" (click)="logout()">log out </button>
 
   <div class="card-container">
     <ng-container *ngFor="let item of productdata; let i = index">
@@ -13,7 +13,7 @@
         <input type="number" [(ngModel)]="item.quantity" placeholder="Quantity" min="1">
       </ng-template>
       <ng-template #actionSetting>
-        <button nz-button nzType="primary" (click)="addtocart(item.pid)">Add to Cart</button>
+        <button nz-button nzType="primary" (click)="addtocart(item)">Add to Cart</button>
         
       </ng-template>
     </ng-container>

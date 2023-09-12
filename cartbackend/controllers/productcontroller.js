@@ -13,8 +13,9 @@ exports.getAllItem=(req,res)=>{
 }
 
 exports.cartAdd=(req,res)=>{
-    const pid=req.body;
-    product.addcart(pid,(err,item)=>{
+    const productdetial=req.body;
+
+    product.addcart(productdetial,(err,item)=>{
         if(err){
             res.status().json({error:'internal server error'})
             return;
