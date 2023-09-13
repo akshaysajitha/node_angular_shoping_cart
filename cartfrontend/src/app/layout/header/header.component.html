@@ -1,13 +1,14 @@
 <nz-layout>
     <nz-header>
       <ul nz-menu nzTheme="dark" nzMode="horizontal" id ="ulid">
-        <li nz-menu-item>login</li>
-        <li nz-menu-item>product</li>
-        <li nz-menu-item>cart</li>
-        <li nz-menu-item>product</li>
+        <!-- <li nz-menu-item>login</li> -->
+        <li nz-menu-item><a [routerLink]="['/products']">product</a></li>
+        <li nz-menu-item><a [routerLink]="['/cart']">cart</a></li>
         <li nz-menu-item>ordered item</li>
       </ul>
+      <router-outlet></router-outlet>
     </nz-header>
-  </nz-layout>
+    
   
+  </nz-layout>
   

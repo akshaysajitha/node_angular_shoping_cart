@@ -22,7 +22,10 @@ export class ListComponent implements OnInit {
       }
     );
   }
-
+  onButtonClick(){
+    this.router.navigate(['/cart']);
+  }
+  
 
   addtocart(item:any):void{
     const { pid, name, rate, shortdiscretion, imageurl, discretion, quantity } = item;
@@ -34,16 +37,16 @@ export class ListComponent implements OnInit {
           this.sessionId=response.token;
           localStorage.setItem('sessionId',this.sessionId)
         }
-        alert(pid+name+rate+shortdiscretion+imageurl+discretion+'quentity'+quantity+'session'+this.sessionId )
+        
         console.log('Item added to cart:', response);
-      },
+      }, 
       (error) => {
         console.error('Error adding item to cart:', error);
       },
 
      )
     
-    //  next page cart navigate button wrk function
+   this.onButtonClick()
 
   }
 

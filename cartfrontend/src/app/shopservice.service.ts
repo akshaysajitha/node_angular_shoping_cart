@@ -39,4 +39,17 @@ export class ShopserviceService {
     return this.http.post<any>(`${this.apiUrl}/addtocart`,requestData);
   }
 
+
+  cartview(sessionid:any): Observable<any> {
+    const data={
+      sessionid:sessionid
+    }
+    // Send a POST request to your API
+    return this.http.post<any>(`${this.apiUrl}/cartview`,data);
+  }
+
+
+
+
+
 }

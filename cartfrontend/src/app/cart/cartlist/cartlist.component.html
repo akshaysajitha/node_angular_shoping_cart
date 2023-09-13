@@ -1,0 +1,32 @@
+
+<h1 class="cart-heading">Cart page</h1>
+ 
+ <div class="card-container">
+   <ng-container *ngFor="let item of productdata; let i = index">
+     <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionSetting,]">
+       <nz-card-meta nzTitle="{{item.name }}" nzDescription="{{item.product_discretion}}"></nz-card-meta>
+       <nz-card-meta nzTitle="product  price,{{item.rate	 | currency:'INR'}}"></nz-card-meta>
+       <nz-card-meta nzTitle="Qty,{{item.qty}}"></nz-card-meta>
+       <nz-card-meta nzTitle="Total,{{item.total | currency:'INR'}}"></nz-card-meta>
+     </nz-card>
+     <ng-template #coverTemplate>
+       <img alt="example" src="{{item.imageurl }}" />
+       <!-- <input type="number" [(ngModel)]="item.quantity" placeholder="Quantity"> -->
+     </ng-template>
+     <ng-template #actionSetting>
+      
+     </ng-template>
+     
+   </ng-container>
+
+ </div>
+
+ <div class="additional-info">
+  <h2>Total cart amount </h2>
+  <div *ngIf="productdata.length > 0">
+    <p>Cart Total: {{ productdata[productdata.length - 1].carttoatal | currency:'INR' }}</p>
+  </div>
+  
+ <button nz-button nzType="primary" (click)="addressform()">buy now</button> 
+</div>
+ 
